@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>十五言-每个人都在创造</title>
+</head>
+<link rel="icon" href="{IMG_PATH}index/1.png" type="image/png">
+<link rel="stylesheet" href="{CSS_PATH}index/base.css" />
+<link rel="stylesheet" href="{CSS_PATH}index/header.css" />
+<script src="{JS_PATH}index/jquery.min.js"></script>
+<script src="{JS_PATH}index/header.js"></script>
+<body>
+<!--头部-->
+<nav>
+    <div class="nav">
+        <ul>
+            <li>
+                <div class="hanbao">
+                    <span>
+                        {if !$flag}
+                        <i class="icon iconfont n">&#xe615;</i>
+                        {else}
+                        <a href="javascript:;" class="userimg"><img id="userimg" src="{$result['imgurl']}" alt=""></a>
+                        {/if}
+                    </span>
+                    <div class="daoh">
+                        <div class="trigon"></div>
+                        <ul>
+                            <li><a href="index.php"><i class="icon iconfont1">&#xe60c;</i> 首页</a></li>
+                            {if !$flag}
+                            <li><a href="index.php?a=login"><i class="icon iconfont1">&#xe61f;</i> 登录</a></li>
+                            <li><a href="index.php?a=signup"><i class="icon iconfont1">&#xe601;</i> 注册</a></li>
+                            {else}
+                            <li uid2="{$result['id']}" id="per"><a href="index.php?a=mine"><i class="icon iconfont1">&#xe621;</i> 个人中心</a></li>
+                            <li><a href="index.php?a=logout"><i class="icon iconfont1">&#xe779;</i> 退出</a></li>
+                            {/if}
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="search">
+                    <form action="" method="post">
+                        <input type="text" name="search" id="search" value="{if $sear}{$sear}{/if}" placeholder="搜索">
+                        <a href="javascript:;" class="sear"><i class="icon icon3">&#xe651;</i></a>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" flag="{$flag}" class="drive"><i class="icon icon4">&#xe617;</i>写文章</a>
+            </li>
+        </ul>
+    </div>
+</nav>

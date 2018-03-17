@@ -1,0 +1,205 @@
+{include file='index/header.html'}
+{include file='index/modal.html'}
+<link rel="stylesheet" href="{CSS_PATH}index/show.css" />
+<link rel="stylesheet" href="{CSS_PATH}index/modal.css" />
+<script src="{JS_PATH}index/moment.min.js"></script>
+<script src="{JS_PATH}index/show.js"></script>
+<div id="keep">内容不能为空</div>
+		<div class="note">
+			<div class="post">
+				<div class="artice" sid="{$res['sid']}">
+					<h1 class="stitle">{$res['stitle']}</h1>
+					<div class="author">
+						<a href=""><img src="{$res['uimgurl']}" alt="" /></a>
+						<div class="sinfo">
+							<span class="sauth">作者</span>
+							<span class="name">{$res['uname']}</span>
+							{if $result['id']!=$res['uid']}<a href="javascript:;" flag="{$flag}" uid1="{$res['uid']}" {if $flag} guan={$guan} {/if}>{if $flag} {if $guan=='true'}已关注{else}+关注{/if}{else}+关注{/if}</a>{/if}
+							<div class="meta">
+                				<span class="publish-time">{$res['stime']}</span>
+            					<span class="views-count">阅读 4017</span>
+            					<span class="comments-count">评论 97</span>
+            					<span class="likes-count">喜欢 181</span>
+							</div>
+						</div>
+					</div>
+					<div class="scont">
+						{$res['scont']}
+					</div>
+				</div>
+				<div class="floau">
+					<div class="author">
+						<div class="s_info">
+							<a href="" class="auimg"><img src="{$res['uimgurl']}" alt="" /></a>
+							<span class="name">{$res['uname']}</span>
+							{if $result['id']!=$res['uid']}<a href="javascript:;" class="guan" flag="{$flag}"  {if $flag} guan={$guan} {/if} uid1="{$res['uid']}">{if $flag} {if $guan=='true'}已关注{else}+关注{/if}{else}+关注{/if}</a>{/if}
+							<p class="meta">
+                				被 <i>{$count['num']}</i>人关注，获得了 <em>{$lovenum}</em>个收藏
+							</p>
+						</div>
+					</div>
+					<p class="aresume">{$res['resume']}</p>
+				</div>
+                {if $result['id']!=$res['uid']}
+				<div class="meta_bottom">
+					<div class="like">
+						<div class="like-group {if $flag} {if $love=='true'}active{/if} {/if}" flag="{$flag}">
+							<div class="btn-like">
+								<span>
+									<i class="icon icon8">&#xe8cf;</i>
+									收藏
+								</span>
+							</div>
+							<div class="modal-wrap">
+								<span>{$lovenum}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+                {/if}
+				{if !$flag}
+				<div class="subcom">
+					<a href=""><img src="{IMG_PATH}index/per.png" alt=""></a>
+					<div class="sign-container">
+						<a href="index.php?a=login" class="btn-sign">登录</a>
+						<span>后发表评论</span>
+					</div>
+				</div>
+				{else}
+				<div class="subcom" id="rate">
+					<a href=""><img src="{$result['imgurl']}" alt=""></a>
+					<textarea placeholder="写下你的评论..."></textarea>
+					<div class="write">
+						<span class="send">发送</span>
+						<span class="cacel">取消</span>
+					</div>
+				</div>
+				{/if}
+				<div class="ping">
+					<div class="ptop">
+						<span>{if $ratenum!='0'}<i>{$ratenum}</i>条{/if}评论</span>
+					</div>
+                    <div class="commentbox">
+						{if !$rate}
+                        <div class="norate">
+							<img src="{IMG_PATH}index/p.png" alt="">
+							<p>智慧如你，不想<a>发表一点想法</a>咩~</p>
+						</div>
+						{else}
+							{foreach $rate $v}
+						<div class="comment">
+							<div class="mauth">
+								<a href="" >
+									<img src="{$v.imgurl}" alt="" />
+								</a>
+								<div class="minfo">
+									<a href="">{$v.uname}</a>
+									<p >
+										<span>13楼 ·{$v.rtime}</span>
+									</p>
+								</div>
+							</div>
+							<div class="comment_wrap">
+								<p>{$v.rtext}</p>
+								<div class="groop" rid="{$v['rid']}" uid="{$v['uid']}">
+									<a href="javascript:;">
+										<i class="icon icon6">&#xe6cd;</i>
+										<span>点赞</span>
+									</a>
+									<a href="javascript:;" class="reply" flag="{$flag}">
+										<i class="icon icon6">&#xe6a3;</i>
+										<span>回复</span>
+									</a>
+									{if $v['uid']==$result['id']}
+									<a href="javascript:;" class="delrate">
+										<span>删除</span>
+									</a>
+									{/if}
+								</div>
+							</div>
+							<div class="sub_comment">
+								<div class="comment_rebox">
+							{if $reply}
+								{foreach $reply $r}
+									{if $r['rid']==$v['rid']}
+									<div class="comment_re">
+										<p>
+											<a href="">{$r['uname2']}</a>：
+											<span>
+										{$r['mtext']}
+
+											</span>
+										</p>
+										<div class="sub_group" mid="{$r['mid']}" uid="{$r['uid2']}">
+											<span>{$r['mtime']}</span>
+											<a class="answer" flag="{$flag}">
+												<i class="icon icon7">&#xe6a3;</i>
+												<span>回复</span>
+											</a>
+											{if $r['uid2']==$result['id']}
+											<a href="javascript:;" class="delmess">
+												<span>删除</span>
+											</a>
+											{/if}
+										</div>
+									</div>
+								{if $replymess}
+									{foreach $replymess $m}
+										{if $m['pid']==$r['mid']}
+									<div class="comment_re">
+										<p>
+											<a href="">{$m['uname2']}</a>：
+											<span>
+										<a href=""  >@{$m['uname1']}</a>
+										{$m['mtext']}
+
+											</span>
+										</p>
+										<div class="sub_group" mid="{$m['mid']}" uid="{$m['uid2']}">
+											<span>{$m['mtime']}</span>
+											<a class="answer" flag="{$flag}">
+												<i class="icon icon7">&#xe6a3;</i>
+												<span>回复</span>
+											</a>
+											{if $m['uid2']==$result['id']}
+											<a href="javascript:;" class="delmess">
+												<span>删除</span>
+											</a>
+											{/if}
+										</div>
+									</div>
+												{/if}
+											{/foreach}
+										{/if}
+									{/if}
+									{/foreach}
+								{/if}
+
+								</div>
+
+								<div class="subcom">
+									<textarea placeholder="写下你的评论..."></textarea>
+									<div class="write" >
+										<span class="send"  rid="{$v['rid']}" uid="{$v['uid']}">发送</span>
+										<span class="cacel">取消</span>
+									</div>
+								</div>
+							</div>
+						</div>
+							{/foreach}
+						{/if}
+
+
+
+
+
+                    </div>
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

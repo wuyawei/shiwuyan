@@ -1,0 +1,30 @@
+{include file='index/header.html'}
+<link rel="stylesheet" href="{CSS_PATH}index/subject.css" />
+
+    <div class="hot_sub">
+        <img src="{IMG_PATH}index/subjecaa.png" alt="">
+    </div>
+
+    <div class="subject_box">
+        <div class="show_li">
+            <div class="hot_list active">
+                {foreach $arr $v}
+                <div class="h_con" >
+                    <div class="collection-wrap">
+                        <a class="cateimg" href="index.php?f=lists&catid={$v['cat_id']}" >
+                            <img src="{$v['imgurl']}" alt="" />
+                        </a>
+                        <h4><a href="index.php?f=lists&catid={$v['cat_id']}" >{$v['cat_name']}</a></h4>
+                        <p class="zhai">{{$v['cat_desc']}|truncate:30:"..."}</p>
+                        <a class="flo">+订阅</a>
+                        <hr>
+                        <div class="count"><a href="index.php?f=lists&catid={$v['cat_id']}" >19636篇文章</a>·387.2K人订阅</div>
+                    </div>
+                </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

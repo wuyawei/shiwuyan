@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网站信息</title>
+    <link rel="stylesheet" href="{CSS_PATH}pintuer.css">
+    <link rel="stylesheet" href="{CSS_PATH}admin.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}pintuer.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+    <table class="table table-hover text-center">
+        <tr>
+            <th>pos_id</th>
+            <th>推荐位</th>
+            <th>操作</th>
+        </tr>
+        {foreach $result $r}
+            <tr>
+                <td>{$r['id']}</td>
+                <td>{$r['posname']}</td>
+                <td>
+                    <div class='button-group'>
+                        <a type='button' class='button border-main' href="index.php?m=admin&f=position&a=editposit&id={$r['id']}"><span class='icon-edit'></span>修改</a>
+                        <a class='button border-red' href="index.php?m=admin&f=position&a=delposit&id={$r['id']}"><span class='icon-trash-o'></span>删除</a>
+                    </div>
+                </td>
+            </tr>
+        {/foreach}
+
+    </table>
+</div>
+<div class="panel admin-panel margin-top">
+    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>添加推荐位</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-x" action="index.php?m=admin&f=position&a=addposit">
+            <div class="form-group">
+                <div class="label">
+                    <label>推荐位名称：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="posname" value="" data-validate="required:请输入标题" />
+                    <div class="tips"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label></label>
+                </div>
+                <div class="field">
+                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body></html>

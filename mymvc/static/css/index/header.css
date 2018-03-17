@@ -1,0 +1,229 @@
+body{
+    padding-top: 90px;
+}
+
+/*iconfont*/
+@font-face {
+    font-family: 'iconfont';
+    src: url('../../font/index/iconfont.eot');
+    src: url('../../font/index/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../../font/index/iconfont.woff') format('woff'),
+    url('../../font/index/iconfont.ttf') format('truetype'),
+    url('../../font/index/iconfont.svg#iconfont') format('svg');
+}
+.icon{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    color: #666;
+}
+.iconfont{
+    font-size:36px;
+    color: #666;
+}
+.iconfont1{
+    font-size:24px;
+    color: #888;
+}
+.iconfont2{
+    font-size:16px;
+    color: #B4B4B4;
+}
+
+.icon1{
+    font-size:20px;
+    color: #FA6060;
+    opacity: 0.8;
+    margin-right: 10px;
+}
+.icon2{
+    font-size:20px;
+    color: #FE7D06;
+    opacity: 0.8;
+    margin-right: 10px;
+}
+.icon3{
+    font-size:22px;
+    color: #666;
+    margin-right: 10px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.icon4{
+    font-size: 20px;
+    color: #fff;
+    margin-right: 5px;
+}
+/*头部*/
+nav{
+    width:100%;
+    height: 60px;
+    padding-top: 5px;
+    background-color: #fff;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 1111;
+}
+.hanbao{
+    width: 60px;
+    height: 100%;
+    position: relative;
+}
+.hanbao span{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+.hanbao span.active i{
+    color: #27AE60;
+}
+.hanbao span:hover i{
+    color: #27AE60;
+}
+.userimg{
+    display: block;
+    width:45px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 50%;
+}
+.hanbao span.active .userimg{
+    background-color: #eee;
+}
+.userimg:hover{
+    background-color: #eee;
+}
+.userimg img{
+    width:45px;
+    border-radius: 50%;
+    border:1px solid #888;
+}
+.daoh{
+    position: absolute;
+    left: 0;
+    top: 80%;
+    width: 182px;
+    padding-top:30px;
+    display: none;
+}
+.trigon{
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid #333333;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid transparent;
+    position: absolute;
+    top: -10px;
+    left: 15px;
+}
+.daoh ul{
+    width: 100%;
+    background-color: #333333;
+    padding: 10px 0;
+}
+.daoh ul li{
+    width:100%;
+    line-height: 30px;
+}
+.daoh ul li:hover{
+    background-color: #27AE60;
+}
+.daoh ul li:hover i,.daoh ul li:hover a{
+    color: #fff;
+}
+.daoh ul li a{
+    width:100%;
+    box-sizing: border-box;
+    display: block;
+    padding: 12px 0px 12px 30px;
+    font-size: 20px;
+    color: #eee;
+}
+.daoh ul li a i{
+    margin-right: 15px;
+}
+.nav{
+    width:960px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-color: #f0f0f0;
+    border-width: 0 0 1px;
+}
+.nav>ul{
+    display: flex;
+    width:100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav .main{
+    color: #25b25e;
+    font-size: 20px;
+}
+
+.nav .search{
+    position: relative;
+    width: 240px;
+}
+.search form{
+    position: absolute;
+    left:-10px;
+    top:-15px;
+    padding: 0 40px 0 20px;
+    width: 120px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #eee;
+    border-radius: 40px;
+    background: #eee;
+    transition: width 0.5s;
+}
+.search input{
+    width:100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: #eee;
+    font-size: 16px;
+}
+.search .sear{
+    position: absolute;
+    right:5px;
+    top:4px;
+    width: 30px;
+    height: 30px;
+    color: #969696;
+    border-radius: 50%;
+    background-color: transparent;
+    display: table;
+}
+.search form.active{
+    width:200px;
+}
+.search .active .sear{
+    background-color:#888;
+}
+.search .active .icon3{
+    color: #fff;
+}
+.drive{
+    width: 100px;
+    height: 40px;
+    line-height: 24px;
+    margin: 8px 15px 0;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #27AE60;;
+    padding: 8px 13px;
+}
+

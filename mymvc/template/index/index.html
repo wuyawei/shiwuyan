@@ -1,0 +1,139 @@
+{include file='index/header.html'}
+{include file='index/modal.html'}
+<link rel="stylesheet" href="{CSS_PATH}index/index.css" />
+<link rel="stylesheet" href="{CSS_PATH}index/modal.css" />
+<script src="{JS_PATH}index/index.js"></script>
+	<!--logo-->
+
+	<div class="logo">
+		<div class="lo_inner">
+			<span class="h1"><img src="{IMG_PATH}index/2.jpeg" alt="" /></span>
+			<p>每个人都在创造</p>
+			{if !$flag}
+			<div class="login"><a href="index.php?a=login">登录</a></div>
+			{/if}
+		</div>
+	</div>
+
+	<div class="colum">
+		<a class="cor curr" href="javascript:;">
+			<span>文章</span>
+			<div></div>
+		</a> 
+		<a class="cor" href="javascript:;">
+			<div></div>
+			<span>主题</span>
+		</a>
+	</div>
+	<!--内容-->
+	<div class="showbox">
+		<div class="showw  active">
+			<div class="show_l">
+				<ul class="s_list">
+					{foreach $res $v}
+					<li>
+						<div class="s_cont">
+							<div class="author">
+						        <a class="toux"  href="">
+						        	<img src="{$v['uimgurl']}" alt="96">
+						        </a>
+						        <div class="name">
+						        	<a class="uname" href="">{$v['uname']}</a>
+						        	<span class="time">{$v['stime']}</span>
+						      	</div>
+						    </div>
+						    <a href="index.php?f=show&sid={$v['sid']}" class="title">{$v['stitle']}</a>
+						    <p class="scont">{$v['skey']|truncate:100}...
+	    					</p>
+	    					<div class="meta">
+	        					<a class="cate" href="">{$v['cat_name']}</a>
+	      						<a >
+	        						<i class="icon iconfont2">&#xe690;</i> 2598
+								</a>
+								<a >
+	          						<i class="icon iconfont2">&#xe60e;</i> 66
+								</a>
+								<a ><i class="icon iconfont2">&#xe610;</i>307</a>
+	    					</div>
+						</div>
+						<a href="">
+							<img src="{$v['imgurl']}" alt="" />
+						</a>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+			<div class="show_r">
+				<div class="board">
+					<a href=""><img src="{IMG_PATH}index/xin.png" alt="" /></a>
+					<a href=""><img src="{IMG_PATH}index/sev.png" alt="" /></a>
+					<a href=""><img src="{IMG_PATH}index/tir.png" alt="" /></a>
+				</div>
+				<div class="recommend">
+					<div class="tiath">
+						<span>推荐作者</span>
+					</div>
+					<ul class="re_list">
+						<li>
+							<a href="" class="autimg"><img src="img/06c537002583.png" alt="" /></a>
+							<a class="follow" href="">+关注</a>
+							<a href="" class="rename">hhh</a><span>白金作家</span>
+							<p>80k人关注</p>
+						</li>
+						<li>
+							<a href="" class="autimg"><img src="img/06c537002583.png" alt="" /></a>
+							<a class="follow" href="">+关注</a>
+							<a href="" class="rename">hhh</a><span>白金作家</span>
+							<p>80k人关注</p>
+						</li>
+						<li>
+							<a href="" class="autimg"><img src="img/06c537002583.png" alt="" /></a>
+							<a class="follow" href="">+关注</a>
+							<a href="" class="rename">hhh</a><span>白金作家</span>
+							<p>80k人关注</p>
+						</li>
+						<li>
+							<a href="" class="autimg"><img src="img/06c537002583.png" alt="" /></a>
+							<a class="follow" href="">+关注</a>
+							<a href="" class="rename">hhh</a><span>白金作家</span>
+							<p>80k人关注</p>
+						</li>
+						<li>
+							<a href="" class="autimg"><img src="img/06c537002583.png" alt="" /></a>
+							<a class="follow" href="">+关注</a>
+							<a href="" class="rename">hhh</a><span>白金作家</span>
+							<p>80k人关注</p>
+						</li>
+						<li>
+							<a href="" class="autimg"><img src="img/06c537002583.png" alt="" /></a>
+							<a class="follow" href="">+关注</a>
+							<a href="" class="rename">hhh</a><span>白金作家</span>
+							<p>80k人关注</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="showw">
+			<div id="hot">
+				<ul>
+					<li class="curr" posid="7">热门主题</li>
+					<li posid="6">推荐主题</li>
+				</ul>
+				<a href="index.php?f=lists&a=more" class="more_coll">
+					查看更多专题 >
+				</a>
+			</div>
+			<div class="show_li">
+				<div class="hot_list active">
+
+				</div>
+				<div class="hot_list">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

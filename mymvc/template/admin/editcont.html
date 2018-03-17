@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="{CSS_PATH}pintuer.css">
+    <link rel="stylesheet" href="{CSS_PATH}admin.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}pintuer.js"></script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="{EDIT_PATH}ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="{EDIT_PATH}ueditor.all.js"></script>
+</head>
+<style>
+    #tfile {
+        position: relative;
+        background: #D0EEFF;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 5px 12px;
+        overflow: hidden;
+        color: #1E88C7;
+        line-height: 30px;
+        text-align: center;
+        margin-left: 15px;
+    }
+    #tfile input {
+        width:100%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .itm{
+        width:100%;
+        height: 0%;
+        border-radius: 4px;
+        position: absolute;
+        left:0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.3);
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+    }
+    .btn{
+        width:80px;
+        background: #D0EEFF;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 5px 5px;
+        overflow: hidden;
+        color: #1E88C7;
+        line-height: 18px;
+        text-align: center;
+        margin-left: 15px;
+        margin-top: 10px;
+        float: left;
+        cursor: pointer;
+        position: relative;
+    }
+    .show_p{
+        float: left;
+        margin: 0;
+        margin-left: 15px;
+        line-height: 50px;
+        cursor: pointer;
+        display: none;
+        position: relative;
+    }
+    .show_p:hover .show_d{
+        display: block;
+    }
+    .show_d{
+        position: absolute;
+        left:0;
+        top:0;
+        width:300px;
+        z-index: 111;
+        display: none;
+    }
+    .show_d img{
+        width:100%;
+    }
+    .curr{
+        width:300px;
+        float: left;
+        overflow: hidden;
+        margin-left: 15px;
+    }
+    .curr img{
+        width:100%;
+    }
+</style>
+<body>
+<div class="panel admin-panel">
+    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>修改内容</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-x" action="index.php?m=admin&f=show&a=editcontinfo">
+            <div class="form-group">
+                <div class="label">
+                    <label>标题：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50 t1" value="{$row['stitle']}" name="stitle" placeholder="{$row['stitle']}" data-validate="required:请输入标题" />
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>图片：</label>
+                </div>
+                <div class="field">
+                    <div id="tfile" style="float:left;">
+                        选择文件
+                        <input type="file" name="file" id="image1" value="+ 浏览上传" >
+                    </div>
+                    <div class="show_p">查看预览
+                        <div class="show_d">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <div class="btn">点击上传
+                        <div class="itm"></div>
+                    </div>
+                    <div class="curr">
+                        当前图片：
+                        <img src="{$row['imgurl']}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <if condition="$iscid eq 1">
+                <div class="form-group">
+                    <div class="label">
+                        <label>所属栏目：</label>
+                    </div>
+                    <div class="field">
+                        <select name="cid" class="input w50 lanmu t2" val="{$row['cid']}">
+                            {$str}
+                            {foreach $results $v}
+                            <option value="{$v['cat_id']}">{$v['cat_name']}</option>
+                            {/foreach}
+                        </select>
+                        <div class="tips"></div>
+                    </div>
+                </div>
+
+            </if>
+            <script id="container" name="scont" type="text/plain">
+            {$row['scont']}
+            </script>
+            <br />
+
+            <div class="clear"></div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>内容关键字：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" name="skey" value="{$row['skey']}" placeholder="{$row['skey']}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>作者：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="authour" value="{$row['authour']}"  placeholder="{$row['authour']}"/>
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>推荐位：</label>
+                </div>
+                <div class="field" style="padding-top:8px;">
+                    {foreach $result1 $v}
+                    {$v['posname']}<input type="checkbox" name="posit" value="{$v['id']}" {if $posid == $v['id']} checked {/if}/>
+                    {/foreach}
+                </div>
+            </div>
+            <input type="hidden" name="sid" value="{$sid}">
+            <input type="hidden" name="imgurl" id="imgurl" value="{$row['imgurl']}" placeholder="{$row['imgurl']}">
+            <div class="form-group">
+                <div class="label">
+                    <label></label>
+                </div>
+                <div class="field">
+                    <button class="button bg-main icon-check-square-o sub" type="submit"> 提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    $(function () {
+//        &&$(".t3").val()==$(".t3").attr("placeholder")
+        var val=$("#editor").val();
+        $(".sub").click(function (e) {
+            e.preventDefault();
+            console.log($("#editor").text())
+            if($(".t1").val()==$(".t1").attr("placeholder")&&$(".t2").val()==$(".t2").attr("val")&&$("#editor").val()==val&&$("#imgurl").val()==$("#imgurl").attr("placeholder")){
+                alert("请修改后提交");
+            }else{
+                $(".form-x").get(0).submit();
+            }
+        });
+
+        var file=document.querySelector("#image1");
+        var fname;
+        var files="";
+        var size=20*1024*1024;
+        var typearr=["jpg","jpeg","gif","png"];
+        file.onchange=function () {
+            $(".btn").get(0).innerText="点击上传";
+            files=this.files[0];
+            fname=files.name.substr(files.name.lastIndexOf(".")+1);
+            function check(){
+                if(files.size>size){
+                    alert("文件过大");
+                    return false;
+                }
+                var flag = false;
+                for(var i =0;i<typearr.length;i++){
+                    if(fname==typearr[i]){
+                        flag=true;
+                        break;
+                    }
+                }
+                if(!flag){
+                    alert("格式不符");
+                    return false;
+                }
+                return true;
+            }
+            if(check()){
+                var read = new FileReader;
+                read.readAsDataURL(files);
+                read.onload=function(e) {
+                    var e = e||window.event;
+                    $(".show_d img").get(0).src=e.target.result;
+                    $(".curr img").get(0).src=e.target.result;
+                }
+                $(".show_p").css("display","block");
+            }
+        };
+
+        $(".btn").click(function(){
+            if(files==""){
+                alert("请选择文件");
+                return;
+            }
+            var formdata =new FormData();
+            formdata.append("file",files);
+            var ajax=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+            ajax.upload.onprogress=function (e) {
+                var e = e||window.event;
+                var itm=e.loaded/e.total*100+"%";
+                $(".itm").css("height",itm);
+            };
+            ajax.onload=function () {
+                $("#imgurl").attr("value",ajax.responseText);
+                $(".itm").css("height",0);
+                $(".btn").get(0).innerText="上传成功";
+            };
+            ajax.open("post","index.php?m=admin&f=show&a=upload");
+            ajax.send(formdata);
+        })
+
+    })
+</script>
+
+<script type="text/javascript">
+    var ue = UE.getEditor('container', {
+        initialFrameWidth:1000,
+        initialFrameHeight:500,
+    });
+</script>

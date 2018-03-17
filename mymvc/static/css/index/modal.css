@@ -1,0 +1,59 @@
+
+/*弹出框*/
+
+#zhezhao{
+    width:100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 1112;
+    display: none;
+}
+.modal{
+    width:500px;
+    height: 100px;
+    border-radius: 10px;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:180px auto;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    background-color: #fff;
+}
+
+.modal p{
+    font-size: 20px;
+    padding: 15px 35px;
+    color: #666;
+}
+.modal .b{
+    position: absolute;
+    bottom: 18px;
+    width:80px;
+    height: 30px;
+    border-radius: 4px;
+    border:1px solid #ccc;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.modal .on{
+    right: 20px;
+}
+.modal .off{
+    right: 120px;
+}
+.modal .active{
+    background-color: #3194d0;
+    color: #fff;
+}
+.modal .off:hover{
+    background-color: #eee;
+}
+.modal .active:hover{
+    background-color: #3189C2;
+}
+

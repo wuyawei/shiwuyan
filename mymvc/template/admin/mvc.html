@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+	<ul>
+		{foreach $arr $v}
+		<li>
+			{$v['cat_name']}
+			<ul>
+			{foreach $arr1 $r}
+				{if $r['parent_id']==$v['cat_id']}
+					<li>
+					{$r['cat_name']}
+					</li>
+				{/if}
+			{/foreach}
+			</ul>
+		</li>
+		{/foreach}
+	</ul>
+	</body>
+</html>

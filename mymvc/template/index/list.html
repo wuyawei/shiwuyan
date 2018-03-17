@@ -1,0 +1,87 @@
+{include file='index/header.html'}
+{include file='index/modal.html'}
+<link rel="stylesheet" href="{CSS_PATH}index/list.css" />
+<link rel="stylesheet" href="{CSS_PATH}index/modal.css" />
+<script src="{JS_PATH}index/list.js"></script>
+
+<!--<div id="keep">操作失败</div>-->
+	<div class="list_box">
+		<div class="list_left">
+			<div class="lis_top">
+				<a href="" class="lisimg"><img src="{$arr['imgurl']}" alt="" /></a>
+				<a href="javascript:;" class="love" flag="{$flag}" take="{$take}" catid="{$arr['cat_id']}">{if $take=="true"}已订阅{else}+订阅{/if}</a>
+				<a href="" class="title">{$arr['cat_name']}</a>
+				<p class="listinfo">
+					收录了1386篇文章，7779人订阅
+				</p>
+			</div>
+			<ul class="tirgger">
+				<li class="active"><i class="icon icon1">&#xe61b;</i>最新</li>
+				<li  catid="{$arr['cat_id']}"><i class="icon icon2">&#xe61a;</i>热门</li>
+			</ul>
+			<div class="listcon">
+				<ul class="s_list active">
+					{if $res}
+						{foreach $res $v}
+					<li>
+						<div class="s_cont">
+							<div class="author">
+								<a class="toux"  href="">
+									<img src="{$v['uimgurl']}" alt="96">
+								</a>
+								<div class="name">
+									<a class="uname" href="">{$v['uname']}</a>
+									<span class="time">{$v['stime']}</span>
+								</div>
+							</div>
+							<a href="index.php?f=show&sid={$v['sid']}" class="title">{$v['stitle']}</a>
+							<p class="scont">
+								{$v['skey']|truncate:100}...
+							</p>
+							<div class="meta">
+								<a href="" class="hits">
+									<i class="icon iconfont2">&#xe690;</i> 2598
+								</a>
+								<a  href="" class="ping">
+									<i class="icon iconfont2">&#xe60e;</i> 66
+								</a>
+								<a class="shouc" href=""><i class="iconfont2">&#xe610;</i>307</a>
+							</div>
+						</div>
+						<a href="">
+							<img src="{$v['imgurl']}" alt="" />
+						</a>
+					</li>
+						{/foreach}
+					{else}
+					<p>暂无内容！</p>
+					{/if}
+				</ul>
+				<ul class="s_list">
+
+				</ul>
+			</div>
+		</div>
+		<div class="listright">
+			<div class="lr_top">
+				<h3>专题公告</h3>
+				<div>{$arr['notice']}</div>
+			</div>
+			<div class="lr_foot">
+				<h3>关注的人(604064)</h3>
+				<ul class="list_col">
+					<li><a href=""><img src="{IMG_PATH}index/7b00c78a-ed66-400e-8cef-0b188778f70a.jpg" alt=""></a></li>
+					<li><a href=""><img src="{IMG_PATH}index/7b00c78a-ed66-400e-8cef-0b188778f70a.jpg" alt=""></a></li>
+					<li><a href=""><img src="{IMG_PATH}index/7b00c78a-ed66-400e-8cef-0b188778f70a.jpg" alt=""></a></li>
+					<li><a href=""><img src="{IMG_PATH}index/7b00c78a-ed66-400e-8cef-0b188778f70a.jpg" alt=""></a></li>
+					<li><a href=""><img src="{IMG_PATH}index/7b00c78a-ed66-400e-8cef-0b188778f70a.jpg" alt=""></a></li>
+					<li><a href="" class="end">...</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+
+	</body>
+</html>

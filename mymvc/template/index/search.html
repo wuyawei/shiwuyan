@@ -1,0 +1,68 @@
+{include file='index/header.html'}
+<link rel="stylesheet" href="{CSS_PATH}index/search.css" />
+<script src="{JS_PATH}index/search.js"></script>
+<script src=""></script>
+    <div class="search_box">
+        <div class="sbox_l">
+            <ul class="mean">
+                <li class="active">
+                    <div><i class="icon icon9">&#xe61b;</i></div>
+                    <span>文章</span>
+                </li>
+                <li>
+                    <div><i class="icon icon9">&#xe604;</i></div>
+                    <span>用户</span>
+                </li>
+                <li>
+                    <div><i class="icon icon9">&#xe626;</i></div>
+                    <span>专题</span>
+                </li>
+            </ul>
+        </div>
+        <div class="sbox_r">
+            <div class="sort_type">
+                <a href="">综合排序</a>
+                <a href="">15254 个结果</a>
+            </div>
+            <ul class="search_list active">
+            {if $res}
+                {foreach $res $v}
+                <li>
+                    <div class="sl_content">
+                        <div class="autour">
+                            <a href=""><img src="{$v['uimgurl']}" alt=""></a>
+                            <div class="name">
+                                <a href="">{$v['uname']}</a>
+                                <span>{$v['stime']}</span>
+                            </div>
+                        </div>
+                        <a href="index.php?f=show&sid={$v['sid']}" class="title">{$v['stitle']}</a>
+                        <p class="abscont">
+                            {$v['skey']|truncate:300:"..."}
+                        </p>
+                        <div class="meta">
+                            <a >
+                                <i class="icon iconfont2">&#xe690;</i> 2598
+                            </a>
+                            <a >
+                                <i class="icon iconfont2">&#xe60e;</i> 66
+                            </a>
+                            <a ><i class="icon iconfont2">&#xe610;</i>307</a>
+                        </div>
+                    </div>
+                </li>
+                {/foreach}
+            {else}
+                <p>暂无相关内容！</p>
+            {/if}
+            </ul>
+            <ul class="search_list">
+
+            </ul>
+            <ul class="search_list">
+
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

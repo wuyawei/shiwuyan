@@ -1,0 +1,41 @@
+{include file='index/header.html'}
+<link rel="stylesheet" href="{CSS_PATH}index/myset.css" />
+<script src="{JS_PATH}index/mineset.js"></script>
+<script src="{JS_PATH}upload.class.js"></script>
+
+<div id="keep">保存成功</div>
+    <div class="mineset">
+        <div class="formdata">
+            <a href=""><img id="uimg" src="{$result['imgurl']}" alt=""></a>
+            <div class="upfile">
+                <span>更换头像</span>
+                <input type="file" name="file" id="file">
+            </div>
+        </div>
+        <input type="hidden" name="user" id="zh" value="{$result['user']}">
+        <div class="formdata">
+            <label for="#user">昵称</label>
+            <input type="text" name="uname" id="user" value="{$result['uname']}">
+        </div>
+        <div class="formdata">
+            <label for="#usign">个性签名</label>
+            <input type="text" name="usign" id="usign" value="{$result['usign']}">
+        </div>
+        <div class="formdata">
+            <label >性别</label>
+            <span>男</span><input type="radio" name="sex" {if $result['sex']=="男"} checked {/if} value="男">
+            <span>女</span><input type="radio" name="sex" {if $result['sex']=="女"} checked {/if} value="女">
+        </div>
+        <div class="formdata">
+            <label for="#resume">个人简介:</label>
+            <textarea name="resume" id="resume" cols="30" placeholder="填写您的个人简介" rows="10">{$result['resume']}</textarea>
+        </div>
+
+        <div class="sub">保存</div>
+
+    </div>
+
+
+
+</body>
+</html>
